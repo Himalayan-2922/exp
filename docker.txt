@@ -1,0 +1,13 @@
+docker --version
+mkdir shop
+cd shop
+notepad index.html
+notepad cart.html
+notepad style.css
+notepad Dockerfile.txt
+docker build -t shop-app .
+docker images
+docker run -d -p 8081:80 --name shop shop-app
+docker rm shop
+docker run -d -p 8080:80 --name shop shop-app
+docker ps

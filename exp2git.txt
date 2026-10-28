@@ -1,0 +1,39 @@
+git--version
+
+git config--global user.name "Your Name" 
+git config--global user.email "your@email.com" 
+git config--list
+
+#git init
+mkdir myproject
+cd myproject 
+git init
+
+#git add
+echo "Hello Git" > file1.txt 
+git status 
+git add file1.txt 
+git status
+
+#git commit
+git commit-m "First commit" 
+
+#git diff
+echo "Second line added" >> file1.txt
+git diff
+git add file1.txt 
+git commit-m "Updated file1"
+
+#git branch
+git branch
+ git branch feature # list branches
+ git checkout feature
+
+echo "Feature work" > file2.txt
+ git add file2.txt
+ git commit-m "Added file2 in feature branch"
+
+git branch-d feature
+
+# git push
+GitHub varche command takichya copy karun
