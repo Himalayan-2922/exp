@@ -1,0 +1,29 @@
+git --version
+docker --version
+java -version
+
+mkdir filename
+cd filename
+notepad index.html
+notepad Dockerfile
+notepad Jenkinsfile
+
+dir
+
+ren Dockerfile.txt Dockerfile
+ren Jenkinsfile.txt Jenkinsfile
+
+#docker 
+docker build -t shop-app .
+docker run -d -p 8080:80 --name shop shop-app
+docker ps
+http://localhost:8080/
+docker rm medical
+
+#github puss
+ git init
+git add .
+git commit -m "Add Jenkins Docker project files"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/jenkins-docker.git
+git push -u origin main
