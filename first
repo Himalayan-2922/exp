@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+Fs = 6000
+t = np.arange(0, 0.04, 1/Fs)
+
+# Transmitted Signal
+Am = 1
+fm = 100
+message = Am * np.sin(2 * np.pi * fm * t)
+
+plt.subplot(3, 1, 1)
+plt.plot(t, message, color="green")
+plt.title("Transmitted Signal")
+plt.ylabel("Amplitude")
+plt.grid()
+
+# Channel output with added Gaussian noise
+noise_power = 0.4
+noise = np.random.normal(0, noise_power, len(t))
+channel_output = message + noise
+
+plt.subplot(3, 1, 2)
+plt.plot(t, channel_output, color="red")
+plt.title("Channel O/P after noise")
+plt.ylabel("Amplitude")
+plt.grid()
+
+# Recovered Signal
+window_size = 10
+
+recovered_signal = np.convolve(
+    channel_output,
+    np.ones(window_size) / window_size,
+    mode="same"
+)
+
+plt.subplot(3, 1, 3)
+plt.plot(t, recovered_signal, color="blue", label="Recovered Signal")
+plt.plot(t, message, "g--", alpha=0.5, label="Original Reference")
+plt.title("Recovered Signal by Receiver")
+plt.xlabel("Time (seconds)")
+plt.ylabel("Amplitude")
+plt.grid()
+plt.legend()
+
+plt.tight_layout()
+plt.show()
