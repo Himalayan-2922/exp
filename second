@@ -1,0 +1,31 @@
+import numpy as np 
+import matplotlib.pyplot as plt 
+t= np.arange(0,2,0.001) 
+#message signal 
+Am=5 
+fm=5 
+message= Am*np.sin(2*np.pi*fm*t) 
+plt.subplot(3,1,1) 
+plt.plot(t,message) 
+plt.xlabel("Time") 
+plt.ylabel("Amplitude") 
+plt.title("Message Signal") 
+#Carrier signal 
+Ac=10 
+fc=50 
+carrier= Ac*np.sin(2*np.pi*fc*t) 
+plt.subplot(3,1,2) 
+plt.plot(t,carrier) 
+plt.xlabel("Time") 
+plt.ylabel("Amplitude") 
+plt.title("Carrier Signal") 
+#Modulated signal 
+m= Am/Ac  
+modulated_signal= Ac*(1+m*np.sin(2*np.pi*fm*t))*np.sin(2*np.pi*fc*t) 
+plt.subplot(3,1,3) 
+plt.plot(t,modulated_signal) 
+plt.xlabel("Time") 
+plt.ylabel("Amplitude") 
+plt.title("Modulated Signal") 
+plt.tight_layout() 
+plt.show() 
