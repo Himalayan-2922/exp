@@ -1,0 +1,54 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+i = 2
+j = 1
+
+# Cluster size
+N = i*i + i*j + j*j
+print("Cluster Size:", N)
+
+# Frequency reuse distance
+R = 2
+D = np.sqrt(3*N)*R
+
+print("Cell radius:", R)
+print("Maximum Frequency Reuse Distance:", round(D,2))
+
+# Cell locations
+tower_A = np.array([0,0])
+tower_B = np.array([D,0])
+tower_C = np.array([D/2, np.sqrt(3)*D/2])
+
+towers = [tower_A, tower_B, tower_C]
+
+# Draw Hexagon
+def draw_hexagon(x,y,r):
+    hx = [x-r, x-r*0.5, x+r*0.5, x+r,
+          x+r*0.5, x-r*0.5, x-r]
+
+    hy = [y, y+r*0.866, y+r*0.866, y,
+          y-r*0.866, y-r*0.866, y]
+
+    plt.fill(hx, hy, color="lightgray", edgecolor="black")
+
+for i,tower in enumerate(towers):
+    draw_hexagon(tower[0], tower[1], R)
+    plt.text(tower[0], tower[1], f"Tower {i+1}\nF1",
+             ha="center", va="center")
+
+# Draw triangle sides
+cx = [tower_A[0], tower_B[0], tower_C[0], tower_A[0]]
+cy = [tower_A[1], tower_B[1], tower_C[1], tower_A[1]]
+
+plt.plot(cx, cy, 'o--', linewidth=2)
+
+plt.text(D/2, 0, f"D:{round(D,2)} km", color="blue")
+plt.text(D/4, D*0.433, f"D:{round(D,2)} km", color="blue")
+plt.text(3*D/4, D*0.433, f"D:{round(D,2)} km", color="blue")
+
+plt.title("Frequency Reuse")
+plt.xlabel("Horizontal distance")
+plt.ylabel("Vertical distance")
+plt.grid()
+plt.show()
