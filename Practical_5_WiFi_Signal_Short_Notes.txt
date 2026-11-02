@@ -1,0 +1,67 @@
+EXPERIMENT NO. 05
+Title: Measurement of Wi-Fi Signal Strength vs Distance for Wi-Fi Router
+
+AIM:
+To measure Wi-Fi signal strength at different distances from a Wi-Fi router and study the relationship between distance and received signal strength.
+
+SOFTWARE:
+WiFiMan application and Python (Matplotlib).
+
+THEORY:
+Wi-Fi uses radio waves to transmit data between a router and wireless devices. Signal strength is measured using RSSI (Received Signal Strength Indicator) in dBm. RSSI values are usually negative. A value closer to 0 dBm indicates a stronger signal. As distance from the router increases, the signal generally becomes weaker.
+
+RSSI SIGNAL QUALITY:
+-30 to -50 dBm : Excellent
+-51 to -60 dBm : Very Good
+-61 to -70 dBm : Good
+-71 to -80 dBm : Fair
+Below -80 dBm : Weak
+
+PROCEDURE:
+1. Switch on the Wi-Fi router.
+2. Connect the laptop/mobile to the Wi-Fi network.
+3. Open the WiFiMan application and identify the Wi-Fi network (SSID).
+4. Observe the RSSI value near the router.
+5. Move to different distances and record the RSSI value.
+6. Enter the readings in the observation table.
+7. Plot the graph of distance versus RSSI using Python.
+
+OBSERVATION TABLE:
+Steps    Distance (m)    RSSI (dBm)    Signal Quality
+0        0               -37           Excellent
+5        3.75            -51           Very Good
+10       7.5             -60           Very Good
+15       11.25           -62           Good
+20       15              -69           Good
+25       18.75           -74           Fair
+30       22.5            -76           Fair
+
+SSID: FAMT-WiFi
+Channel Number: 6
+Additional reading: At 18.75 m with a wall obstacle, RSSI = -88 dBm (Weak).
+
+PYTHON PROGRAM:
+import matplotlib.pyplot as plt
+
+distance = [0, 3.75, 7.5, 11.25, 15, 18.75, 22.5]
+rssi = [-37, -51, -60, -62, -69, -74, -76]
+
+plt.plot(distance, rssi, marker='o')
+plt.xlabel("Distance from Wi-Fi Router (meters)")
+plt.ylabel("RSSI (dBm)")
+plt.title("Distance vs Wi-Fi Signal Strength")
+plt.grid(True)
+plt.show()
+
+FACTORS AFFECTING WI-FI SIGNAL:
+1. Distance: Greater distance generally gives a weaker signal.
+2. Obstacles: Walls, doors and furniture reduce signal strength.
+3. Interference: Other Wi-Fi networks and electronic devices can affect the signal.
+4. Frequency: 2.4 GHz, 5 GHz and 6 GHz bands have different coverage and penetration.
+5. Antenna: Antenna position and direction affect signal reception.
+
+RESULT:
+Wi-Fi signal strength was measured at different distances from the router and a graph of distance versus RSSI was plotted.
+
+CONCLUSION:
+As the distance from the router increases, the RSSI value generally becomes more negative, which means the Wi-Fi signal becomes weaker. Obstacles and interference can also reduce signal strength.
